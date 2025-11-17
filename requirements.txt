@@ -1,0 +1,8 @@
+streamlit==1.38.0
+fastapi==0.115.0
+uvicorn==0.30.0
+python-fido2==1.1.0
+pyotp==2.9.0
+qrcode==7.4.2
+requests==2.32.3
+pydantic==2.9.2

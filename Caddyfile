@@ -1,0 +1,20 @@
+www.eslt.com {
+    # Redirige tout le HTTP vers HTTPS
+    redir / https://www.eslt.com{uri}
+
+    # Dashboard Streamlit
+    handle_path /dashboard* {
+        reverse_proxy frontend:8501
+    }
+
+    # API FastAPI
+    handle_path /api* {
+        reverse_proxy backend:8000
+    }
+
+    # Rate limiting simple (20 requêtes/minute par IP sur /api)
+    @api path /api*
+    rate_limit @api {
+        zone api_zone 20r/m
+    }
+}
